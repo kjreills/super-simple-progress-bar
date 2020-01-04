@@ -1,2 +1,6 @@
-# super-simple-progress-bar
-A very basic progress bar library for C++ console applications
+# Super Simple Progress Bar
+A beautiful, easy to use progress bar for C++ console applications.
+
+
+
+Built using the Windows Subsystem for Linux.

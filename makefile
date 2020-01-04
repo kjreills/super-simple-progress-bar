@@ -4,32 +4,28 @@ CLEANEXTS   = o a
 
 # Specify the target file and the install directory
 OUTPUTFILE  = libsupersimpleprogressbar.a
-INSTALLDIR  = ../bin
+INSTALLDIR  = bin
 
-# Default target
-.PHONY: build
-build: "src/progress_bar.o"
-
-progress_bar.o: "src/progress_bar.cpp"
-- g++ -o $@ $^
-
-.PHONY: all
-all: $(OUTPUTFILE)
+# Build object file
+progress_bar.o: src/progress_bar.cpp
+- g++ $< -o $@ -c
 
 # Build library from object files
-# Object files are built automatically from .cpp files by make's database of implicit rules
-$(OUTPUTFILE): "src/progress_bar.o"
+$(OUTPUTFILE): progress_bar.o
 - ar ru $@ $^
 - ranlib $@
+
+# Default target
+.PHONY: all
+all: $(OUTPUTFILE)
 
 .PHONY: install
 install:
 - mkdir -p $(INSTALLDIR)
 - cp -p $(OUTPUTFILE) $(INSTALLDIR)
+- cp -p "src/progress_bar.hpp" $(INSTALLDIR)
+- cp -p "src/colors.hpp" $(INSTALLDIR)
 
 .PHONY: clean 
 clean:
 - for file in $(CLEANEXTS); do rm -f *.$$file; done
-
-# Indicate dependencies of .cpp files on .hpp files
-progress_bar.o: progress_bar.hpp colors.hpp

@@ -1,5 +1,5 @@
-#include "progress_bar.h"
-#include "colors.h"
+#include "progress_bar.hpp"
+#include "colors.hpp"
 #include <iostream>
 
 using namespace std;
@@ -30,10 +30,11 @@ void progress_bar::init(string mainColor)
 
 void progress_bar::update(int percentComplete)
 {
-    for (int i = 0; i < 100; i++)
-    {
-        cout << '\b';
-    }
+    // for (int i = 0; i < 105; i++)
+    // {
+    //     cout << '\b';
+    // }
+    cout << "\x1b[500D";
 
     cout << color;
 

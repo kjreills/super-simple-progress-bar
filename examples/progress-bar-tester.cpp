@@ -1,9 +1,9 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
-#include "../utils/write_line.h"
-#include "../utils/progress_bar.h"
-#include "../utils/colors.h"
+#include <string>
+#include "../bin/progress_bar.hpp"
+#include "../bin/colors.hpp"
 
 using namespace std;
 using namespace console;
@@ -15,6 +15,17 @@ void test(progress_bar progress)
         progress.update(i);
         std::this_thread::sleep_for(std::chrono::milliseconds(rand() % 100));
     }
+}
+
+void write_line() 
+{
+    std::cout << std::endl;
+}
+    
+template <class T>
+void write_line(T value)
+{
+    std::cout << value << std::endl;
 }
 
 int main() {
