@@ -64,5 +64,17 @@ int main() {
     test(progress);
     write_line();
 
+    // Cyan
+    write_line("Testing Cyan progress bar...");
+    progress.init(colors.FgCyan);
+    test(progress);
+    write_line();
+
+    // Yellow
+    write_line("Testing Yellow progress bar...");
+    progress.init(colors.FgYellow);
+    test(progress);
+    write_line();
+
     write_line();
 }
